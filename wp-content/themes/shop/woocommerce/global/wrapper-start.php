@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Content wrappers
  *
@@ -15,13 +16,13 @@
  * @version     3.3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
 $template = wc_get_theme_slug_for_templates();
 
-switch ( $template ) {
+switch ($template) {
 	case 'twentyten':
 		echo '<div id="container"><div id="content" role="main">';
 		break;
@@ -42,6 +43,9 @@ switch ( $template ) {
 		break;
 	case 'twentysixteen':
 		echo '<div id="primary" class="content-area twentysixteen"><main id="main" class="site-main" role="main">';
+		break;
+	case 'shop':
+		echo '<section id="primary" class="bg-light"><div id="main" class="container pb-5" role="main">';
 		break;
 	default:
 		echo '<div id="primary" class="content-area"><main id="main" class="site-main" role="main">';

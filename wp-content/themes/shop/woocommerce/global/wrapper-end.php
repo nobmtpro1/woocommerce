@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Content wrappers
  *
@@ -15,19 +16,19 @@
  * @version     3.3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
 $template = wc_get_theme_slug_for_templates();
 
-switch ( $template ) {
+switch ($template) {
 	case 'twentyten':
 		echo '</div></div>';
 		break;
 	case 'twentyeleven':
 		echo '</div>';
-		get_sidebar( 'shop' );
+		get_sidebar('shop');
 		echo '</div>';
 		break;
 	case 'twentytwelve':
@@ -38,13 +39,16 @@ switch ( $template ) {
 		break;
 	case 'twentyfourteen':
 		echo '</div></div></div>';
-		get_sidebar( 'content' );
+		get_sidebar('content');
 		break;
 	case 'twentyfifteen':
 		echo '</div></div>';
 		break;
 	case 'twentysixteen':
 		echo '</main></div>';
+		break;
+	case 'shop':
+		echo '</div></section>';
 		break;
 	default:
 		echo '</main></div>';
