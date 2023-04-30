@@ -1,0 +1,30 @@
+2023-04-30T13:33:08+00:00 CRITICAL Uncaught Error: Call to undefined function dd() in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\home.php:224
+Stack trace:
+#0 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\controls-stack.php(2268): Elementor_home_Widget->render()
+#1 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(609): Elementor\Controls_Stack->render_by_mode()
+#2 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(750): Elementor\Widget_Base->render_content()
+#3 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Widget_Base->print_content()
+#4 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\Element_Base->print_element()
+#5 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Element_Base->print_content()
+#6 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\Element_Base->print_elemen in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\home.php on line 224
+
+2023-04-30T14:54:32+00:00 CRITICAL Uncaught Error: Call to undefined function get_field() in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\home.php:185
+Stack trace:
+#0 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\controls-stack.php(2268): Elementor_home_Widget->render()
+#1 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(609): Elementor\Controls_Stack->render_by_mode()
+#2 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(750): Elementor\Widget_Base->render_content()
+#3 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Widget_Base->print_content()
+#4 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\Element_Base->print_element()
+#5 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Element_Base->print_content()
+#6 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\Element_Base->print in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\home.php on line 185
+
+2023-04-30T14:54:52+00:00 CRITICAL Uncaught Error: Call to undefined function get_field() in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\home.php:184
+Stack trace:
+#0 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\controls-stack.php(2268): Elementor_home_Widget->render()
+#1 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(609): Elementor\Controls_Stack->render_by_mode()
+#2 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(750): Elementor\Widget_Base->render_content()
+#3 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Widget_Base->print_content()
+#4 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\Element_Base->print_element()
+#5 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Element_Base->print_content()
+#6 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\Element_Base->print in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\home.php on line 184
+
