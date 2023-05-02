@@ -121,3 +121,13 @@ function cipher_add_to_cart_redirect($url = false)
     // We add the `get_bloginfo` part so it saves a redirect on https:// sites.
     return get_bloginfo('wpurl') . add_query_arg(array(), remove_query_arg('add-to-cart'));
 }
+
+add_filter('woocommerce_add_to_cart_fragments', 'iconic_cart_count_fragments', 10, 1);
+
+function iconic_cart_count_fragments($fragments)
+{
+
+    $fragments['.cart-contents-count'] = '<span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark cart-contents-count" id="mini-cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+
+    return $fragments;
+}

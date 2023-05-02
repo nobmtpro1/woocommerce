@@ -29,19 +29,23 @@ $(document).ready(function () {
     return false;
   });
   $(document).on("click", ".btn-minus", function () {
-    var parent = $(this)?.parent()?.parent();
+    var parent = $(this)?.parents(".col-auto");
     var val = parent?.find("#var-value").html();
     val = val == "1" ? val : val - 1;
     parent?.find("#var-value").html(val);
     $(this)?.parent()?.parent()?.find("input")?.val(val);
+    parent.find(".woo-input-quantity").val(val);
+    parent.find(".woo-input-quantity").trigger("change");
     return false;
   });
   $(document).on("click", ".btn-plus", function () {
-    var parent = $(this)?.parent()?.parent();
+    var parent = $(this)?.parents(".col-auto");
     var val = parent?.find("#var-value").html();
     val++;
     parent?.find("#var-value").html(val);
     $(this)?.parent()?.parent()?.find("input")?.val(val);
+    parent.find(".woo-input-quantity").val(val);
+    parent.find(".woo-input-quantity").trigger("change");
     // $("#product-quanity").val(val);
     return false;
   });

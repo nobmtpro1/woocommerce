@@ -5,3 +5,7 @@ Custom Css
 .elementor-widget-wrap{
     padding: 0 !important;
 }
+
+.woocommerce-message{
+    margin: 0;
+}

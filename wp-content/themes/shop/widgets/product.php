@@ -29,12 +29,14 @@ class Elementor_product_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         global $product;
+        // dd($product->id);
         $related = new WP_Query([
             'post_type' => 'product',
+            'post__not_in'   => array($product->id),
             'tax_query' => [
                 [
                     'taxonomy' => 'product_cat',
-                    'terms' => [@get_the_terms($product->ID, 'product_cat')[0]->slug],
+                    'terms' => [@get_the_terms($product->id, 'product_cat')[0]->slug],
                     'field' => 'slug',
                     'operator' => 'IN'
                 ],
