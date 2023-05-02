@@ -1,0 +1,11 @@
+2023-05-02T07:24:36+00:00 CRITICAL Uncaught Error: Call to a member function get_price_html() on null in C:\xampp\htdocs\woo\wp-content\themes\shop\woocommerce\content-product.php:87
+Stack trace:
+#0 C:\xampp\htdocs\woo\wp-includes\template.php(785): require()
+#1 C:\xampp\htdocs\woo\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('C:\\xampp\\htdocs...', false)
+#2 C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\shop.php(130): wc_get_template_part('content', 'product')
+#3 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\controls-stack.php(2268): Elementor_shop_Widget->render()
+#4 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(609): Elementor\Controls_Stack->render_by_mode()
+#5 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(750): Elementor\Widget_Base->render_content()
+#6 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Widget_Base->print_content()
+#7 C:\xampp\htdocs\woo\wp-content\plugin in C:\xampp\htdocs\woo\wp-content\themes\shop\woocommerce\content-product.php on line 87
+

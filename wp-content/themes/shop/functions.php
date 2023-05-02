@@ -54,10 +54,70 @@ function getpostviews($postID)
 function register_elementor_widgets($widgets_manager)
 {
     require_once(__DIR__ . '/widgets/home.php');
+    require_once(__DIR__ . '/widgets/header.php');
+    require_once(__DIR__ . '/widgets/footer.php');
+    require_once(__DIR__ . '/widgets/shop.php');
+    require_once(__DIR__ . '/widgets/product.php');
 
     $widgets_manager->register(new \Elementor_home_Widget());
+    $widgets_manager->register(new \Elementor_header_Widget());
+    $widgets_manager->register(new \Elementor_footer_Widget());
+    $widgets_manager->register(new \Elementor_shop_Widget());
+    $widgets_manager->register(new \Elementor_product_Widget());
 }
 add_action('elementor/widgets/register', 'register_elementor_widgets');
 
 
+function add_styles()
+{
+?>
+    <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/templatemo.css">
+    <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= bloginfo('template_directory') ?>/assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= bloginfo('template_directory') ?>/assets/css/slick-theme.css">
+<?php
+}
+add_action('wp_head', 'add_styles', 999999999);
+
+add_action('elementor/frontend/after_register_scripts', function () {
+    wp_register_script('script-1', get_template_directory_uri() . '/assets/js/jquery-1.11.0.min.js');
+    wp_register_script('script-2', get_template_directory_uri() . '/assets/js/jquery-migrate-1.2.1.min.js');
+    wp_register_script('script-3', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js');
+    wp_register_script('script-4', get_template_directory_uri() . '/assets/js/templatemo.js');
+    wp_register_script('script-5', get_template_directory_uri() . '/assets/js/custom.js');
+    wp_register_script('script-6', get_template_directory_uri() . '/assets/js/slick.min.js');
+    wp_register_script('script-7', get_template_directory_uri() . '/assets/js/product.js');
+
+    wp_enqueue_script('script-1', 'script-1', [], '', true);
+    wp_enqueue_script('script-2', 'script-2', [], '', true);
+    wp_enqueue_script('script-3', 'script-3', [], '', true);
+    wp_enqueue_script('script-4', 'script-4', [], '', true);
+    wp_enqueue_script('script-5', 'script-5', [], '', true);
+    wp_enqueue_script('script-6', 'script-6', [], '', true);
+    wp_enqueue_script('script-7', 'script-7', [], '', true);
+});
+
+
+
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+
+
+add_action('add_to_cart_redirect', 'cipher_add_to_cart_redirect');
+
+function cipher_add_to_cart_redirect($url = false)
+{
+
+    // If another plugin beats us to the punch, let them have their way with the URL
+    if (!empty($url)) {
+        return $url;
+    }
+
+    // Redirect back to the original page, without the 'add-to-cart' parameter.
+    // We add the `get_bloginfo` part so it saves a redirect on https:// sites.
+    return get_bloginfo('wpurl') . add_query_arg(array(), remove_query_arg('add-to-cart'));
+}

@@ -38,3 +38,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	// phpcs:enable WordPress.Security
 	?>
 </p>
+&nbsp;&nbsp;&nbsp;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Pagination - Show numbered pagination for catalog pages
  *
@@ -15,37 +16,59 @@
  * @version 3.3.1
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
-$total   = isset( $total ) ? $total : wc_get_loop_prop( 'total_pages' );
-$current = isset( $current ) ? $current : wc_get_loop_prop( 'current_page' );
-$base    = isset( $base ) ? $base : esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) );
-$format  = isset( $format ) ? $format : '';
+$total   = isset($total) ? $total : wc_get_loop_prop('total_pages');
+$current = isset($current) ? $current : wc_get_loop_prop('current_page');
+$base    = isset($base) ? $base : esc_url_raw(str_replace(999999999, '%#%', remove_query_arg('add-to-cart', get_pagenum_link(999999999, false))));
+$format  = isset($format) ? $format : '';
 
-if ( $total <= 1 ) {
+if ($total <= 1) {
 	return;
 }
 ?>
-<nav class="woocommerce-pagination">
+<ul class="pagination pagination-lg justify-content-end woocommerce-pagination">
 	<?php
-	echo paginate_links(
+	$paginate_links = paginate_links(
 		apply_filters(
 			'woocommerce_pagination_args',
 			array( // WPCS: XSS ok.
 				'base'      => $base,
 				'format'    => $format,
 				'add_args'  => false,
-				'current'   => max( 1, $current ),
+				'current'   => max(1, $current),
 				'total'     => $total,
 				'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
 				'next_text' => is_rtl() ? '&larr;' : '&rarr;',
-				'type'      => 'list',
+				'type'      => 'array',
 				'end_size'  => 3,
 				'mid_size'  => 3,
 			)
 		)
 	);
+
+
+	// dd($paginate_links);
+
+	if (is_array($paginate_links)) {
 	?>
-</nav>
+		<?php
+		foreach ($paginate_links as $paginate_link) {
+		?>
+
+			<li class="page-item ">
+				<?php
+				$paginate_link = str_replace(['page-numbers', 'current'], ['page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark', 'active'], $paginate_link);
+				echo wp_kses_post($paginate_link)
+				?>
+			</li>
+
+		<?php
+		}
+		?>
+	<?php
+	}
+	?>
+</ul>
