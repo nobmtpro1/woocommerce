@@ -135,7 +135,7 @@ function iconic_cart_count_fragments($fragments)
 
 add_filter('woocommerce_form_field_args', 'custom_form_field_args', 10, 3);
 function custom_form_field_args($args, $key, $value)
-{   
+{
     $args['input_class']  =  ['form-control'];
     // your code 
     return $args;
