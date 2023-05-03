@@ -25,32 +25,6 @@ function initTheme()
 
 add_action('init', 'initTheme');
 
-function setpostview($postID)
-{
-    $count_key = 'views';
-    $count = get_post_meta($postID, $count_key, true);
-    if ($count == '') {
-        $count = 0;
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-    } else {
-        $count++;
-        update_post_meta($postID, $count_key, $count);
-    }
-}
-function getpostviews($postID)
-{
-    $count_key = 'views';
-    $count = get_post_meta($postID, $count_key, true);
-    if ($count == '') {
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-        return "0";
-    }
-    return $count;
-}
-
-
 function register_elementor_widgets($widgets_manager)
 {
     require_once(__DIR__ . '/widgets/home.php');
@@ -67,15 +41,12 @@ function register_elementor_widgets($widgets_manager)
 }
 add_action('elementor/widgets/register', 'register_elementor_widgets');
 
-
 function add_styles()
 {
 ?>
     <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/templatemo.css">
     <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="<?= bloginfo('template_directory') ?>/assets/css/fontawesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?= bloginfo('template_directory') ?>/assets/css/slick.min.css">
@@ -102,41 +73,41 @@ add_action('elementor/frontend/after_register_scripts', function () {
     wp_enqueue_script('script-7', 'script-7', [], '', true);
 });
 
-
-
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
-
-
-add_action('add_to_cart_redirect', 'cipher_add_to_cart_redirect');
 
 function cipher_add_to_cart_redirect($url = false)
 {
-
-    // If another plugin beats us to the punch, let them have their way with the URL
     if (!empty($url)) {
         return $url;
     }
-
-    // Redirect back to the original page, without the 'add-to-cart' parameter.
-    // We add the `get_bloginfo` part so it saves a redirect on https:// sites.
-    return get_bloginfo('wpurl') . add_query_arg(array(), remove_query_arg('add-to-cart'));
+    return  add_query_arg(array(), remove_query_arg('add-to-cart'));
 }
+add_action('add_to_cart_redirect', 'cipher_add_to_cart_redirect');
 
 add_filter('woocommerce_add_to_cart_fragments', 'iconic_cart_count_fragments', 10, 1);
-
 function iconic_cart_count_fragments($fragments)
 {
-
     $fragments['.cart-contents-count'] = '<span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark cart-contents-count" id="mini-cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
-
     return $fragments;
 }
-
 
 add_filter('woocommerce_form_field_args', 'custom_form_field_args', 10, 3);
 function custom_form_field_args($args, $key, $value)
 {
     $args['input_class']  =  ['form-control'];
-    // your code 
     return $args;
 };
+
+
+add_action('rest_api_init', function () {
+    register_rest_route('shop', '/search', array(
+        'methods' => 'GET',
+        'callback' => function ($data) {
+            $product = new WP_Query([
+                'post_type' => 'product',
+                's' => @$data->get_param('s')
+            ]);
+            wp_send_json_success($product->posts);
+        },
+    ));
+});
