@@ -105,6 +105,7 @@ class Elementor_home_Widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        // wp_mail('nobmtpro2025@gmail.com', "Woo", 'test');
         // dd($settings['list_items']);
 ?>
         <!-- Modal -->

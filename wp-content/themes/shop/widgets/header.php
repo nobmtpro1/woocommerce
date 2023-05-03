@@ -190,9 +190,9 @@ class Elementor_header_Widget extends \Elementor\Widget_Base
                             <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                             <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark cart-contents-count" id="mini-cart-count"><?= $woocommerce->cart->get_cart_contents_count() ?></span>
                         </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="<?= bloginfo('url') ?>/cart">
+                        <a class="nav-icon position-relative text-decoration-none" href="<?= bloginfo('url') ?>/my-account">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                         </a>
                     </div>
                 </div>
