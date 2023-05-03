@@ -2,10 +2,23 @@
 Custom Css
 */
 
-.elementor-widget-wrap{
-    padding: 0 !important;
+.elementor-widget-wrap {
+  padding: 0 !important;
 }
 
-.woocommerce-message{
-    margin: 0;
+.woocommerce-message {
+  margin: 0;
+}
+
+.woocommerce .cart-collaterals .cart_totals,
+.woocommerce-page .cart-collaterals .cart_totals {
+  width: 100%;
+}
+.button.alt.wp-element-button {
+  background: #59ab6e !important;
+}
+
+.woocommerce-notices-wrapper {
+  padding-top: 40px;
+  background-color: #e9eef5 !important;
 }
