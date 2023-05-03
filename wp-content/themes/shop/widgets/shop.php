@@ -46,7 +46,6 @@ class Elementor_shop_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $categories = get_terms(['post_type' => 'product', 'taxonomy' => 'product_cat', 'hide_empty' => false]);
-        // dd($categories);
 ?>
         <?php woocommerce_output_all_notices() ?>
         <!-- Start Content -->
@@ -75,6 +74,21 @@ class Elementor_shop_Widget extends \Elementor\Widget_Base
                             </li>
                         <?php endforeach ?>
                     </ul>
+
+                    <?php foreach (wc_get_attribute_taxonomies() as $attr) : ?>
+                        <?php $terms = get_terms(array('taxonomy' => 'pa_' . $attr->attribute_name));
+                        ?>
+                        <h1 class="h2 pb-4"><?= $attr->attribute_label ?></h1>
+                        <ul class="list-unstyled templatemo-accordion">
+                            <?php foreach ($terms as $term) : ?>
+                                <li class="pb-3">
+                                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" onclick="window.location.href = window.location.href.split('?')[0] + '?<?= @explode('?', get_term_link($term))[1] ?>'">
+                                        <?= @$term->name ?>
+                                    </a>
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
+                    <?php endforeach ?>
                 </div>
 
                 <div class="col-lg-9">

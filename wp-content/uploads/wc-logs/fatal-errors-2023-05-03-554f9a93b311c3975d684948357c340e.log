@@ -1,0 +1,10 @@
+2023-05-03T15:08:08+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\shop.php:85
+Stack trace:
+#0 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\controls-stack.php(2268): Elementor_shop_Widget->render()
+#1 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(609): Elementor\Controls_Stack->render_by_mode()
+#2 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\widget-base.php(750): Elementor\Widget_Base->render_content()
+#3 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Widget_Base->print_content()
+#4 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\Element_Base->print_element()
+#5 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(449): Elementor\Element_Base->print_content()
+#6 C:\xampp\htdocs\woo\wp-content\plugins\elementor\includes\base\element-base.php(1354): Elementor\E in C:\xampp\htdocs\woo\wp-content\themes\shop\widgets\shop.php on line 85
+

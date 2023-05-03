@@ -187,9 +187,37 @@ class Elementor_header_Widget extends \Elementor\Widget_Base
                         <a class="nav-icon d-none d-lg-inline" href="<?= bloginfo('url') ?>/cart" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                             <i class="fa fa-fw fa-search text-dark mr-2"></i>
                         </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="<?= bloginfo('url') ?>/cart">
+                        <a id="cart" class="nav-icon position-relative text-decoration-none" href="<?= bloginfo('url') ?>/cart">
                             <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark cart-contents-count" id="mini-cart-count"><?= $woocommerce->cart->get_cart_contents_count() ?></span>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark cart-contents-count" id="mini-cart-count"><?= $woocommerce->cart->get_cart_contents_count() ?>
+                            </span>
+                            <div class="mini-cart" id="mini-cart">
+                                <?php woocommerce_mini_cart(); ?>
+                            </div>
+                            <script>
+                                var cart = document.querySelector("#cart")
+                                var miniCart = document.querySelector('#mini-cart')
+                                miniCart?.addEventListener('mouseover', function() {
+                                    if (miniCart) {
+                                        miniCart.style.display = 'flex'
+                                    }
+                                })
+                                miniCart?.addEventListener('mouseleave', function() {
+                                    if (miniCart) {
+                                        miniCart.style.display = 'none'
+                                    }
+                                })
+                                cart?.addEventListener('mouseover', function() {
+                                    if (miniCart) {
+                                        miniCart.style.display = 'flex'
+                                    }
+                                })
+                                cart?.addEventListener('mouseleave', function() {
+                                    if (miniCart) {
+                                        miniCart.style.display = 'none'
+                                    }
+                                })
+                            </script>
                         </a>
                         <a class="nav-icon position-relative text-decoration-none" href="<?= bloginfo('url') ?>/my-account">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>

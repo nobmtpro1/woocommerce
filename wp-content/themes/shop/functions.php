@@ -111,3 +111,28 @@ add_action('rest_api_init', function () {
         },
     ));
 });
+
+
+// add_filter('woocommerce_product_query_tax_query', 'exclude_specific_product_category_query', 10, 2);
+// function exclude_specific_product_category_query($tax_query, $query)
+// {
+//     dd($tax_query);
+//     // Only on Product Tag archives pages
+//     if (is_admin() || !is_product_tag()) return $tax_query;
+
+//     // HERE Define your product category SLUGs to be excluded 
+//     $terms = array('spare-parts'); // SLUGs only
+
+//     // The taxonomy for Product Categories
+//     $taxonomy = 'product_cat';
+
+//     // Add your criteria
+//     $tax_query[] = array(
+//         'taxonomy' => $taxonomy,
+//         'field'    => 'slug', // Or 'name' or 'term_id'
+//         'terms'    => $terms,
+//         'operator' => 'NOT IN', // Excluded
+//     );
+
+//     return $tax_query;
+// }

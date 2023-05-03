@@ -22,3 +22,58 @@ Custom Css
   padding-top: 40px;
   background-color: #e9eef5 !important;
 }
+
+.nav-icon {
+  position: relative;
+}
+
+.mini-cart img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.mini-cart {
+  display: none;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 20px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  transform: translate(-50%, 100%);
+  z-index: 1;
+  width: 300px;
+  flex-direction: column;
+}
+
+.mini-cart ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mini-cart li  {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mini-cart li > a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mini-cart li #cart {
+  display: none;
+}
+
+.woocommerce-mini-cart__buttons.buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
